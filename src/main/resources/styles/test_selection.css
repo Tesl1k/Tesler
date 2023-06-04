@@ -1,0 +1,48 @@
+.set_button {
+    -fx-background-color: #0d1a2c;
+    -fx-background-radius: 15;
+    -fx-background-insets: 0;
+
+    -fx-text-fill: white;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}
+
+.set_button:hover {
+    -fx-background-color: gray;
+    -fx-pref-width: 130px;
+    -fx-pref-height: 48px;
+}
+
+.set_button:pressed {
+    -fx-background-color: #4d4d4d;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}
+
+.back{
+    -fx-background-color: #ffffff;
+
+    -fx-background-radius: 15;
+    -fx-background-insets: 0;
+
+    -fx-text-fill: #0d1a2c;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}
+
+.back:hover{
+    -fx-background-color: gray;
+    -fx-pref-width: 101px;
+    -fx-pref-height: 40px;
+}
+
+.back:pressed {
+    -fx-background-color: #c2c2c2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}

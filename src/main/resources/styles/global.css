@@ -1,0 +1,11 @@
+.text-input {
+    -fx-prompt-text-fill: derive(-fx-control-inner-background, -65%);
+}
+
+.text-input:focused {
+    -fx-prompt-text-fill: transparent;
+}
+
+.button:hover {
+    -fx-cursor: hand;
+}

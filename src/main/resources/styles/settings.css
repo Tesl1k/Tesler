@@ -1,0 +1,57 @@
+.save-button {
+    -fx-background-color: linear-gradient(#7f83d7, #0c63ae);
+    -fx-background-radius: 15;
+    -fx-background-insets: 0;
+
+    -fx-text-fill: white;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}
+
+.save-button:hover {
+    -fx-text-fill: #7f83d7;
+    -fx-background-color: white;
+    -fx-pref-width: 113px;
+    -fx-pref-height: 41px;
+}
+
+.save-button:pressed {
+    -fx-background-color: linear-gradient(#a9b4e3, #8093cb);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}
+
+.combo-box {
+    -fx-font-size: 14px;
+    -fx-background-color: #63dcb8;
+    -fx-background-radius: 3px;
+    -fx-border-radius: 3px;
+}
+
+.combo-box .
+
+.combo-box .arrow{
+    -fx-background-color: #f5f5f5;
+    -fx-background-insets: 0;
+    -fx-background-size: 8px 8px;
+    -fx-alignment: right;
+}
+
+.combo-box:hover {
+    -fx-background-color: #3a816d;
+}
+
+.combo-box:pressed {
+    -fx-background-color: #9be1cd;
+}
+
+.menu-color-picker {
+    -fx-background-color: red;
+}
+
+
+
+
+

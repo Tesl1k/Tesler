@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="root" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to bottom, #16212b 20%, #292a67 50%);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TestEditorController">
+    <VBox fx:id="formPane" alignment="TOP_LEFT" prefWidth="300.0">
+
+        <Label text="Название теста:" textFill="WHITE">
+         <VBox.margin>
+            <Insets bottom="5.0" left="10.0" top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+        <TextField fx:id="titleField">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin></TextField>
+
+        <Label text="Описание:" textFill="WHITE">
+         <VBox.margin>
+            <Insets bottom="5.0" left="10.0" top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+        <TextArea fx:id="descriptionField" maxHeight="-Infinity" wrapText="true" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin></TextArea>
+      <HBox alignment="TOP_CENTER" prefHeight="57.0" prefWidth="800.0">
+         <children>
+      
+              <Label text="Добавление вопросов:" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="90.0" />
+               </HBox.margin>
+            </Label>
+            <Label text="Добавление ответов:" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="250.0" right="40.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="80.0" prefWidth="517.0">
+               <children>
+                    <HBox prefWidth="800.0">
+                        <Label minWidth="-1.0" prefHeight="33.0" prefWidth="79.0" text="Тип вопроса:" textFill="WHITE">
+                        <HBox.margin>
+                           <Insets left="10.0" />
+                        </HBox.margin>
+                        <font>
+                           <Font size="13.0" />
+                        </font>
+                     </Label>
+                        <ComboBox fx:id="questionTypeBox" prefHeight="25.0" prefWidth="178.0" promptText="Выберите тип">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Множественный выбор" />
+                                    <String fx:value="Ввод свободного ответа" />
+                                </FXCollections>
+                            </items>
+                        <HBox.margin>
+                           <Insets left="25.0" right="25.0" />
+                        </HBox.margin>
+                        </ComboBox>
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                    </HBox>
+            
+                    <HBox prefHeight="25.0" prefWidth="164.0">
+                        <Label minWidth="-1.0" prefHeight="19.0" prefWidth="59.0" text="Вопрос:" textFill="WHITE">
+                        <HBox.margin>
+                           <Insets left="10.0" />
+                        </HBox.margin>
+                        <font>
+                           <Font size="13.0" />
+                        </font>
+                     </Label>
+                        <TextField fx:id="questionField" prefHeight="25.0" prefWidth="179.0">
+                        <HBox.margin>
+                           <Insets left="44.0" />
+                        </HBox.margin>
+                     </TextField>
+                        <Button onAction="#addQuestion" prefHeight="25.0" prefWidth="105.0" styleClass="test-button" text="Добавить">
+                        <HBox.margin>
+                           <Insets left="60.0" />
+                        </HBox.margin>
+                     </Button>
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                    </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <AnchorPane prefHeight="80.0" prefWidth="400.0">
+               <children>
+                  <VBox fx:id="setVar" prefHeight="80.0" prefWidth="405.0" visible="false">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="19.0" text="А)" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="varA" />
+                              <Label prefHeight="21.0" prefWidth="19.0" text="Б)" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="varB" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="19.0" text="В)" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="varC" />
+                              <Label prefHeight="21.0" prefWidth="19.0" text="Г)" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="varD" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <TextArea fx:id="freePut" prefHeight="80.0" prefWidth="395.0" visible="false" />
+               </children>
+            </AnchorPane>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </HBox>
+    </VBox>
+
+    <VBox alignment="TOP_LEFT" prefWidth="300.0">
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+              <Label prefHeight="34.0" prefWidth="448.0" text="Список вопросов:" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+            <HBox fx:id="hb" prefHeight="34.0" prefWidth="442.0" visible="false">
+               <children>
+                  <Label text="Правильный вариант:" textFill="#fffefe">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="65.0" right="28.0" />
+                     </HBox.margin>
+                  </Label>
+                   <ComboBox fx:id="rightAnswer" prefHeight="25.0" prefWidth="149.0">
+                       <items>
+                           <FXCollections fx:factory="observableArrayList">
+                               <String fx:value="А" />
+                               <String fx:value="Б" />
+                               <String fx:value="В" />
+                               <String fx:value="Г" />
+                           </FXCollections>
+                       </items>
+                   </ComboBox>
+               </children>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </HBox>
+         </children>
+      </HBox>
+        <ListView fx:id="questionList" editable="true" prefHeight="200.0">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin></ListView>
+        <Button fx:id="deleteButton" disable="true" onAction="#deleteQuestion" styleClass="test-button" text="Удалить">
+         <VBox.margin>
+            <Insets left="10.0" top="5.0" />
+         </VBox.margin></Button>
+    </VBox>
+
+    <HBox alignment="BOTTOM_RIGHT" prefWidth="600.0">
+        <Button onAction="#onSave" styleClass="test-button" text="Сохранить">
+         <HBox.margin>
+            <Insets bottom="25.0" left="25.0" right="12.0" />
+         </HBox.margin></Button>
+        <Button onAction="#onCancel" styleClass="test-button" text="Отмена">
+         <HBox.margin>
+            <Insets bottom="25.0" left="12.0" right="25.0" />
+         </HBox.margin></Button>
+    </HBox>
+</VBox>

@@ -1,0 +1,102 @@
+* {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 10, 3);
+}
+
+#buttonFS{
+    -fx-background-image: url(../images/fullScreen.png);
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 48px;
+    -fx-background-color: null;
+}
+
+#buttonFS:hover{
+    -fx-background-size: 58px;
+}
+
+#buttonOFS{
+    -fx-background-image: url(../images/outFullScreen.png);
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 48px;
+    -fx-background-color: null;
+}
+
+#buttonOFS:hover{
+    -fx-background-size: 58px;
+}
+
+.start-button {
+    -fx-background-color: linear-gradient(#7f83d7, #4b54be);
+    -fx-background-radius: 15;
+    -fx-background-insets: 0;
+
+    -fx-text-fill: white;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}
+
+.start-button:hover {
+    -fx-text-fill: #7f83d7;
+    -fx-background-color: white;
+}
+
+#buttonLogin:hover{
+    -fx-pref-width: 100px;
+    -fx-pref-height: 40px;
+    -fx-translate-x: 5px;
+}
+
+#buttonReg:hover{
+    -fx-pref-width: 122px;
+    -fx-pref-height: 40px;
+    -fx-translate-x: 5px;
+}
+
+.start-button:pressed {
+    -fx-background-color: linear-gradient(#b7b9e1, #8487b7);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}
+
+#myVk{
+    -fx-background-image: url(../images/frog.jpg);
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 40px;
+    -fx-background-color: null;
+}
+
+#myVk:hover {
+    -fx-border-color: white;
+}
+
+#myVk:pressed {
+    -fx-border-color: linear-gradient(blue, pink);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 8, 0, 0, 0);
+}
+
+#titleLabel{
+    -fx-text-fill: #4e54c8;
+}
+
+#quit{
+    -fx-background-image: url(../images/quit.png);
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 40px;
+    -fx-background-color: null;
+}
+
+#quit:hover {
+    -fx-opacity: 0.8;
+    -fx-background-size: 45px;
+}
+
+#quit:pressed {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 8, 0, 0, 0);
+}
+
+

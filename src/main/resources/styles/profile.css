@@ -1,0 +1,72 @@
+.profile-info{
+    -fx-text-fill: White;
+}
+
+.back-button {
+    -fx-background-color: linear-gradient(#7f83d7, #4b54be);
+    -fx-background-radius: 15;
+    -fx-background-insets: 0;
+
+    -fx-text-fill: white;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 10, 3);
+}
+
+.back-button:hover {
+    -fx-text-fill: #7f83d7;
+    -fx-background-color: white;
+    -fx-pref-width: 82px;
+    -fx-pref-height: 46px;
+    -fx-translate-x: -2px;
+}
+
+.back-button:pressed {
+    -fx-background-color: linear-gradient(#b7b9e1, #8487b7);
+}
+
+.ava-button {
+    -fx-background-color: linear-gradient(#7f83d7, #4b54be);
+    -fx-background-radius: 15;
+    -fx-background-insets: 0;
+
+    -fx-text-fill: white;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 10, 3);
+}
+
+.ava-button:hover {
+    -fx-text-fill: #7f83d7;
+    -fx-background-color: white;
+    -fx-pref-width: 210px;
+    -fx-pref-height: 35px;
+}
+
+.ava-button:pressed {
+    -fx-background-color: linear-gradient(#b7b9e1, #8487b7);
+}
+
+.vbox-info{
+    -fx-background-color: #4f4d8c;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 10, 3);
+}
+
+.vbox-info > * {
+    -fx-background-color: #5c6096;
+    -fx-background-radius: 3px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 10, 3);
+}
+
+#ava{
+    -fx-background-color: #4f4d8c;
+}
+
+.shadow{
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 10, 3);
+}

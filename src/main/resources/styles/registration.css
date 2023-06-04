@@ -1,0 +1,25 @@
+.reg-button {
+    -fx-background-color: linear-gradient(#7a7cb4, #5053b7);
+    -fx-background-radius: 15;
+    -fx-background-insets: 0;
+
+    -fx-text-fill: white;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}
+
+.reg-button:hover {
+    -fx-text-fill: #5053b7;
+    -fx-background-color: white;
+    -fx-pref-width: 121px;
+    -fx-pref-height: 41px;
+    -fx-translate-x: -2px;
+}
+
+.reg-button:pressed {
+    -fx-background-color: linear-gradient(#b7f3c0, #9bdcb9);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}

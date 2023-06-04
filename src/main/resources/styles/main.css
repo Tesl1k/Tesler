@@ -1,0 +1,70 @@
+#menu{
+    -fx-background-image: url(../images/profile.png);
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 34px;
+    -fx-background-color: null;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 8, 0, 0, 0);
+}
+
+#menu:hover{
+    -fx-background-color: #6265d2;
+}
+
+#menu .arrow{
+    visibility: hidden;
+}
+
+.menu-item-custom {
+    -fx-padding: 10px;
+    -fx-background-color: #6366d0;
+    -fx-pref-height: 40px;
+    -fx-font-size: 13px;
+}
+
+.menu-item-custom:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #7e80d0;
+}
+
+.menu-button:pressed .context-menu {
+    -fx-background-color: #6366d0;
+    -fx-border-color: #a4a4a4;
+    -fx-pref-width: 200px;
+}
+
+.vbox {
+    -fx-background-color: #8998fd;
+    -fx-background-radius: 15px;
+    -fx-opacity: 0.6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 10, 3);
+}
+
+.vbox > * {
+    -fx-background-color: linear-gradient(#7f83d7, #0c63ae);
+    -fx-background-radius: 15px;
+    -fx-background-insets: 0;
+    -fx-border-color: linear-gradient(#333356, #083b65);
+    -fx-border-radius: 15px;
+    -fx-border-width: 4px;
+
+    -fx-text-fill: white;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}
+
+.vbox > *:hover {
+    -fx-text-fill: #3c2988;
+    -fx-background-color: white;
+    -fx-pref-width: 155px;
+    -fx-pref-height: 55px;
+}
+
+.vbox > *:pressed {
+    -fx-background-color: linear-gradient(#a9b4e3, #8093cb);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}

@@ -1,0 +1,25 @@
+.test-button {
+    -fx-background-color: linear-gradient(#a2a6ee, #0c63ae);
+    -fx-background-radius: 15;
+    -fx-background-insets: 0;
+
+    -fx-text-fill: white;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}
+
+.test-button:hover {
+    -fx-text-fill: #7f83d7;
+    -fx-background-color: white;
+    -fx-pref-width: 110px;
+    -fx-pref-height: 41px;
+    -fx-translate-x: -2px;
+}
+
+.test-button:pressed {
+    -fx-background-color: linear-gradient(#a9b4e3, #8093cb);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}

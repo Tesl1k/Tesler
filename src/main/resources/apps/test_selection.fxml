@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="anc" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #0d1a2c 35%, white)" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TestSelectionController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="105.0" layoutY="100.0" prefHeight="200.0" prefWidth="390.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <Label text="Выберите тест:" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            <ComboBox fx:id="selectTest" prefHeight="25.0" prefWidth="392.0" />
+            <Button mnemonicParsing="false" onAction="#testPassed" prefHeight="43.0" prefWidth="120.0" styleClass="set_button" text="Пройти">
+               <VBox.margin>
+                  <Insets top="150.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#deleteTest" prefHeight="43.0" prefWidth="120.0" styleClass="set_button" text="Удалить">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <Button layoutX="534.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="35.0" prefWidth="91.0" styleClass="back" text="Назад" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+   </children>
+</AnchorPane>
