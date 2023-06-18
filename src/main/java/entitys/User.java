@@ -1,10 +1,12 @@
 package entitys;
 
 import DAO.UserDAO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javafx.scene.image.Image;
 
 import javax.persistence.*;
 import java.io.*;
+import java.util.*;
 
 @Entity
 @Table(name = "user")
@@ -23,8 +25,12 @@ public class User {
     @Column(name = "password")
     private String password;
     @Lob
+    @JsonIgnore
     @Column(name = "avatar")
     private byte[] avatar;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<UserTest> userTests = new HashSet<>();
 
     public User(){
     }
@@ -92,9 +98,40 @@ public class User {
         FileInputStream fis = new FileInputStream(file);
         fis.read(bAvatar);
         this.avatar = bAvatar;
+    }
 
-        UserDAO.update(this);
+    public Set<UserTest> getUserTests() {
+        return userTests;
+    }
 
+    public void setUserTests(Set<UserTest> userTests) {
+        this.userTests = userTests;
+    }
+
+    public List<Test> getTests() {
+        List<Test> tests = new ArrayList<>();
+        for (UserTest userTest : userTests) {
+            tests.add(userTest.getTest());
+        }
+        return tests;
+    }
+
+    public void removeTest(Test test) {
+        UserTest userTestToRemove = null;
+        for (UserTest userTest : userTests) {
+            if (userTest.getTest().getTitle().equals(test.getTitle())) {
+                userTestToRemove = userTest;
+                break;
+            }
+        }
+        if (userTestToRemove != null) {
+            userTestToRemove.setTest(null);
+            userTests.remove(userTestToRemove);
+        }
+    }
+
+    public void addUserTest(UserTest userTest){
+        userTests.add(userTest);
     }
 
     @Override

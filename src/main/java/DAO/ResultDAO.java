@@ -3,11 +3,13 @@ package DAO;
 import entitys.Result;
 import entitys.Test;
 import entitys.User;
+import entitys.UserTest;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
+import resources.Factory;
 
 import java.util.List;
 
@@ -17,22 +19,9 @@ public class ResultDAO {
 
     private static List<Result> results;
 
-    private SessionFactory factory;
+    private SessionFactory factory = Factory.getFactory();
 
-    public void connection(){
-
-        factory = new Configuration()
-                .configure("/hibernate.cfg.xml")
-                .addAnnotatedClass(Result.class)
-                .addAnnotatedClass(Test.class)
-                .addAnnotatedClass(User.class)
-                .buildSessionFactory();
-
-        check();
-
-    }
-
-    private void check(){
+    public void check(){
         try{
 
             Session session = factory.getCurrentSession();
@@ -51,8 +40,6 @@ public class ResultDAO {
 
     public void addResult(Result result){
 
-        connection();
-
         try{
 
             Session session = factory.getCurrentSession();
@@ -69,7 +56,6 @@ public class ResultDAO {
         }
         finally {
             check();
-            close();
         }
 
 
@@ -78,7 +64,6 @@ public class ResultDAO {
 
     public void deleteResult(Result result){
 
-        connection();
 
         try {
             Session session = factory.getCurrentSession();
@@ -94,7 +79,6 @@ public class ResultDAO {
         }
         finally {
             check();
-            close();
         }
 
 

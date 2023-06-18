@@ -6,6 +6,10 @@
     -fx-prompt-text-fill: transparent;
 }
 
+.button{
+    -fx-transition: all 0.3s;
+}
+
 .button:hover {
     -fx-cursor: hand;
 }

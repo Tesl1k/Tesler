@@ -69,10 +69,19 @@ public class MainController implements Initializable {
     }
 
     public void testCreate() throws Exception {
-        TestEditor testCreate = context.getBean("testEditor", TestEditor.class);
-        Stage stage = new Stage();
-        testCreate.start(stage);
-        Main.getStage().close();
+        if(!Boolean.parseBoolean(config.get("isGuest"))){
+            TestEditor testCreate = context.getBean("testEditor", TestEditor.class);
+            Stage stage = new Stage();
+            testCreate.start(stage);
+            Main.getStage().close();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ошибка");
+            alert.setHeaderText(null);
+            alert.setContentText("Для создания тестов необходимо авторизироваться");
+            alert.showAndWait();
+        }
     }
 
     public void testPassing() throws Exception {
@@ -96,9 +105,19 @@ public class MainController implements Initializable {
     }
 
     public void profile() throws IOException {
-        Profile profile = context.getBean(Profile.class);
-        Stage stage = new Stage();
-        profile.start(stage);
-        Main.getStage().close();
+
+        if(Boolean.parseBoolean(config.get("isGuest")) == false){
+            Profile profile = context.getBean(Profile.class);
+            Stage stage = new Stage();
+            profile.start(stage);
+            Main.getStage().close();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ошибка");
+            alert.setHeaderText(null);
+            alert.setContentText("Для перехода в личный кабинет необходимо авторизироваться");
+            alert.showAndWait();
+        }
     }
 }

@@ -3,6 +3,7 @@ package controllers;
 import DAO.ResultDAO;
 import DAO.TestDAO;
 import DAO.UserDAO;
+import applications.GuestResult;
 import applications.Main;
 import applications.TestPassing;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -11,8 +12,6 @@ import configs.MainConfig;
 import entitys.Result;
 import entitys.Test;
 import entitys.User;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -40,7 +39,8 @@ public class TestPassingController implements Initializable {
     private List<Test> tests;
     private Test test;
     private User user;
-    private Map<String, List<String>> questions, answers, results;
+    private Map<String, List<String>> questions, answers;
+    private static Map<String, List<String>> results;
     private String questionType;
     private List<String> questionsList, selectionAnswers;
 
@@ -57,24 +57,34 @@ public class TestPassingController implements Initializable {
         userDAO = context.getBean(UserDAO.class);
         resultDAO = context.getBean(ResultDAO.class);
 
+
         TestPassing.getStage().setFullScreen(Boolean.parseBoolean(config.get("fullScreen")));
 
         vb.prefWidthProperty().bind(sp.widthProperty());
         vb.prefHeightProperty().bind(sp.heightProperty());
 
-        tests = testDAO.getTests();
+        if(!Boolean.parseBoolean(config.get("isGuest"))){
+            tests = testDAO.getTests();
+        }
+        else {
+            tests = testDAO.getGuestTests();
+
+        }
 
         for (Test test : tests){
             if(test.getTitle().equals(config.get("testTitle"))){
                 this.test = test;
-                user = userDAO.getUser(config.get("userEmail"));
+                if (!Boolean.parseBoolean(config.get("isGuest"))){
+                    user = userDAO.getUser(config.get("userEmail"));
+                }
             }
         }
 
         try {
             questions = test.getQuestions();
             answers = test.getAnswers();
-        } catch (JsonProcessingException e) {
+        }
+        catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
 
@@ -96,7 +106,6 @@ public class TestPassingController implements Initializable {
 
         List<ToggleGroup> toggles = new ArrayList<>();
         List<TextArea> areas = new ArrayList<>();
-        ObservableList<String> selectedValuesList = FXCollections.observableArrayList();
         List<String> toggleQuestion = new ArrayList<>(), areaQuestion = new ArrayList<>();
         List<String> toggleRightAnswer = new ArrayList<>(), areaRightAnswer = new ArrayList<>();
 
@@ -215,12 +224,6 @@ public class TestPassingController implements Initializable {
                 }
             }
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Спасибо");
-            alert.setHeaderText(null);
-            alert.setContentText("Тест \"" + title.getText() + "\" пройден");
-            alert.showAndWait();
-
             for (int i = 0; i < toggleQuestion.size(); i++){
 
                 List<String> list = new ArrayList<>();
@@ -250,24 +253,43 @@ public class TestPassingController implements Initializable {
             }
 
 
-            try {
-                Result result = new Result(user, test, results);
-                resultDAO.addResult(result);
+            if(!Boolean.parseBoolean(config.get("isGuest"))){
+
+                try {
+                    Result result = new Result(user, test, results);
+                    resultDAO.addResult(result);
+                }
+                catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
+
+                Main main = context.getBean(Main.class);
+                Stage stage = new Stage();
+
+                try {
+                    main.start(stage);
+                }
+                catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
-            catch (JsonProcessingException e) {
-                throw new RuntimeException(e);
+            else {
+                GuestResult guestResult = context.getBean(GuestResult.class);
+                Stage stage = new Stage();
+
+                try {
+                    guestResult.start(stage);
+                }
+                catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
 
-
-            Main main = context.getBean(Main.class);
-            Stage stage = new Stage();
-
-            try {
-                main.start(stage);
-            }
-            catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Спасибо");
+            alert.setHeaderText(null);
+            alert.setContentText("Тест \"" + title.getText() + "\" пройден");
+            alert.showAndWait();
 
             TestPassing.getStage().close();
 
@@ -293,6 +315,10 @@ public class TestPassingController implements Initializable {
             main.start(stage);
             TestPassing.getStage().close();
         }
+    }
+
+    public static Map<String, List<String>> getResults(){
+        return results;
     }
 
 }

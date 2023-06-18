@@ -27,6 +27,8 @@ public class TestPassing extends Application {
 
         ScrollPane root = loader.load();
 
+        root.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
         Scene scene = new Scene(root);
 
         scene.getStylesheets().add(getClass().getResource("/styles/global.css").toExternalForm());

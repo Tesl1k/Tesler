@@ -2,12 +2,14 @@ package controllers;
 
 import DAO.TestDAO;
 import DAO.UserDAO;
+import DAO.UserTestDAO;
 import applications.Main;
 import applications.TestEditor;
 import configs.Config;
 import configs.MainConfig;
 import entitys.Test;
 import entitys.User;
+import entitys.UserTest;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -40,6 +42,7 @@ public class TestEditorController {
     private AnnotationConfigApplicationContext context;
     private TestDAO testDAO;
     private UserDAO userDAO;
+    private UserTestDAO userTestDAO;
     private Config config;
 
     public void initialize() {
@@ -51,8 +54,9 @@ public class TestEditorController {
         context = new AnnotationConfigApplicationContext(MainConfig.class);
         config = new Config("src/main/resources/properties/saving.properties");
 
-        testDAO = context.getBean("testDAO", TestDAO.class);
-        userDAO = context.getBean("userDAO", UserDAO.class);
+        testDAO = context.getBean(TestDAO.class);
+        userDAO = context.getBean(UserDAO.class);
+        userTestDAO = context.getBean(UserTestDAO.class);
 
         questionList.setItems(observableList);
         questionList.setEditable(true);
@@ -227,8 +231,11 @@ public class TestEditorController {
 
         User user = userDAO.getUser(config.get("userEmail"));
         Test test = new Test(title, description, questions, answers, user);
+        UserTest userTest = new UserTest(user, test);
         testDAO.addTest(test);
-
+        userTestDAO.addUserTest(userTest);
+        user.setUserTests(new HashSet<>(userTestDAO.getUserTests()));
+        userDAO.update(user);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Успех");
@@ -251,7 +258,7 @@ public class TestEditorController {
     private void quitTestEditor(Alert alert) throws Exception {
         Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.isPresent() && result.get() == ButtonType.OK) {
+        if (result.isPresent() && (result.get() == ButtonType.OK || result.get() == ButtonType.CLOSE)){
             Main main = context.getBean(Main.class);
             Stage stage = new Stage();
             main.start(stage);

@@ -52,19 +52,19 @@
 }
 
 .vbox-info{
-    -fx-background-color: #4f4d8c;
+    -fx-background-color: linear-gradient(to bottom, #27394d 20%, #4f4d8c 50%);
     -fx-background-radius: 5px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 10, 3);
 }
 
 .vbox-info > * {
-    -fx-background-color: #5c6096;
+    -fx-background-color: linear-gradient(to bottom, #6365e8 20%, #6854a4 50%);
     -fx-background-radius: 3px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 10, 3);
 }
 
 #ava{
-    -fx-background-color: #4f4d8c;
+    -fx-background-color: linear-gradient(to bottom, #27394d 20%, #4f4d8c 50%);
 }
 
 .shadow{

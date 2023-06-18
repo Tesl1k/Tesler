@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/applications/Start.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/configs/Config.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/controllers/RegistrationController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/controllers/StartController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/spring_introduction/Cat.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/spring_introduction/Dog.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/spring_introduction/IPet.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/spring_introduction/MyConfig.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/spring_introduction/Person.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/spring_introduction/Test6.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/images/back.jpg" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/images/four-arrows.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/images/import.png" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/images/kpc.png" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/images/menu.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/images/menu1.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/images/pc.gif" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/images/pc.png" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/images/profile1.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/images/quit.gif" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/images/quit.png" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/images/test.jpg" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/images/toolTipIcon.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/properties/saving.properties" charset="UTF-8" />
+    <file url="PROJECT" charset="windows-1251" />
+  </component>
+</project>

@@ -1,0 +1,32 @@
+.label{
+    -fx-background-color: linear-gradient(to bottom, #1d4262 20%, #1a4a91 50%);
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+    -fx-padding: 5px;
+    -fx-border-width: 2px;
+    -fx-border-color: #ffffff;
+    -fx-border-radius: 10px;
+}
+
+.button {
+    -fx-background-color: linear-gradient(#7f83d7, #074f8a);
+    -fx-background-radius: 15;
+    -fx-background-insets: 0;
+
+    -fx-text-fill: white;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}
+
+.button:hover {
+    -fx-text-fill: #7f83d7;
+    -fx-background-color: white;
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(#a9b4e3, #8093cb);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
+}

@@ -1,35 +1,27 @@
 package DAO;
 
+import entitys.Result;
 import entitys.Test;
 import entitys.User;
+import entitys.UserTest;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
+import resources.Factory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component("testDAO")
 public class TestDAO {
 
-    private static List<Test> tests;
+    private static List<Test> tests, guestTests;
 
-    private SessionFactory factory;
+    private SessionFactory factory = Factory.getFactory();
 
-    public void connection(){
-
-        factory = new Configuration()
-                .configure("/hibernate.cfg.xml")
-                .addAnnotatedClass(Test.class)
-                .addAnnotatedClass(User.class)
-                .buildSessionFactory();
-
-        check();
-
-    }
-
-    private void check(){
+    public void check(){
 
         try{
 
@@ -49,8 +41,6 @@ public class TestDAO {
 
     public void addTest(Test test){
 
-        connection();
-
         try{
 
             Session session = factory.getCurrentSession();
@@ -67,14 +57,11 @@ public class TestDAO {
         }
         finally {
             check();
-            close();
         }
 
     }
 
     public void deleteTest(Test test){
-
-        connection();
 
         try {
             Session session = factory.getCurrentSession();
@@ -90,9 +77,7 @@ public class TestDAO {
         }
         finally {
             check();
-            close();
         }
-
 
     }
 
@@ -100,6 +85,11 @@ public class TestDAO {
     public List<Test> getTests(){
 
         return tests;
+    }
+
+    public List<Test> getGuestTests(){
+
+        return guestTests;
     }
 
     public Test getTest(int id){
@@ -114,6 +104,19 @@ public class TestDAO {
                 .filter(test -> test.getTitle().equals(title))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public Test getGuestTest(String title){
+        return guestTests.stream()
+                .filter(test -> test.getTitle().equals(title))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public void createGuestTests(){
+
+        guestTests = new ArrayList<>();
+
     }
     public void close(){
         factory.close();

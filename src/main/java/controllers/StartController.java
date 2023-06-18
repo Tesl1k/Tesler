@@ -8,6 +8,7 @@ import DAO.UserDAO;
 import applications.Login;
 import applications.Registration;
 import applications.Start;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -20,6 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import resources.BackFiguresMovement;
 import resources.StageMovement;
@@ -33,9 +35,6 @@ public class StartController implements Initializable{
 
     @FXML
     private Button buttonFS, buttonOFS;
-    private UserDAO userDAO;
-    private TestDAO testDAO;
-    private ResultDAO resultDAO;
     @FXML
     private AnchorPane anc;
     private Config config;
@@ -50,19 +49,11 @@ public class StartController implements Initializable{
 
         context = new AnnotationConfigApplicationContext(MainConfig.class);
 
-        userDAO = context.getBean(UserDAO.class);
-        testDAO = context.getBean(TestDAO.class);
-        resultDAO = context.getBean(ResultDAO.class);
-
-        userDAO.connection();
-        userDAO.close();
-        testDAO.connection();
-        testDAO.close();
-        resultDAO.connection();
-        resultDAO.close();
-
-
         config = new Config("src/main/resources/properties/saving.properties");
+
+        context.getBean(TestDAO.class).createGuestTests();
+
+        config.set("folder", "");
 
         Start.getStage().setFullScreen(Boolean.parseBoolean(config.get("fullScreen")));
 
@@ -74,10 +65,20 @@ public class StartController implements Initializable{
             img.setTranslateX(270);
             img.setFitWidth(350);
             img.setFitHeight(400);
+
+            TranslateTransition transition = new TranslateTransition(Duration.seconds(1), img);
+            transition.setFromX(-img.getBoundsInParent().getWidth());
+            transition.setToX(270);
+            transition.play();
         }
         else {
             AnchorPane.setLeftAnchor(titleLabel, 500.);
             titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
+
+            TranslateTransition transition = new TranslateTransition(Duration.seconds(1), img);
+            transition.setFromX(-img.getBoundsInParent().getWidth());
+            transition.setToX(0);
+            transition.play();
         }
 
     }

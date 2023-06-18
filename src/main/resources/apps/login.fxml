@@ -6,7 +6,6 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="anc" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom left, #16212b 20%, #292a67 50%);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
@@ -27,5 +26,6 @@
       </PasswordField>
       <Label fx:id="isMiss" alignment="CENTER" layoutX="148.0" layoutY="22.0" prefHeight="26.0" prefWidth="306.0" style="-fx-background-radius: 5px; -fx-background-color: #ba7070;" text="Неверный пароль или логин" textFill="WHITE" />
       <CheckBox fx:id="cbSave" layoutX="148.0" layoutY="159.0" mnemonicParsing="false" text="Запомнить" textFill="WHITE" />
+      <Button layoutX="234.0" layoutY="237.0" mnemonicParsing="false" onAction="#loginLikeGuest" prefHeight="35.0" prefWidth="135" styleClass="guest-button" text="Войти как Гость" />
    </children>
 </AnchorPane>

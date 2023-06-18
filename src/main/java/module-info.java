@@ -12,6 +12,7 @@ module tesler {
     requires spring.core;
     requires com.fasterxml.jackson.databind;
     requires java.desktop;
+    requires com.google.gson;
 
     opens applications;
     opens controllers;

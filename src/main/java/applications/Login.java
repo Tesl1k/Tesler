@@ -36,8 +36,8 @@ public class Login extends Application {
 
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setWidth(600);
         stage.setTitle("Login");
+        stage.setWidth(600);
         stage.setHeight(400);
         stage.setResizable(false);
         stage.show();

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anc" prefHeight="630.0" prefWidth="820.0" style="-fx-background-color: #30758f" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingsController">
+<AnchorPane fx:id="anc" prefHeight="630.0" prefWidth="820.0" style="-fx-background-color: linear-gradient(to bottom left, #16212b 20%, #30758f 70%)" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingsController">
    <Label fx:id="lab" layoutX="48.0" layoutY="58.0" prefHeight="25.0" prefWidth="256.0" text="Выберите фоновые фигуры:" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="58.0">
       <font>
          <Font size="16.0" />

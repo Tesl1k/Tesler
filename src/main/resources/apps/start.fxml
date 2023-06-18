@@ -10,7 +10,7 @@
 <AnchorPane fx:id="anc" maxHeight="601.0" maxWidth="800.0" prefHeight="601.0" prefWidth="912.0" style="-fx-background-color: linear-gradient(to bottom left, #16212b 50%, #4e54c8 50%)" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StartController">
    <children>
 
-       <Label fx:id="titleLabel" alignment="CENTER" layoutX="529.0" layoutY="212.0" prefHeight="178.0" prefWidth="426.0" text="ВАС ПРИВЕТСТВУЕТ TESLER - СЕРВИС ДЛЯ СОЗДАНИЯ И УПРАВЛЕНИЯ ТЕСТАМИ!" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" AnchorPane.bottomAnchor="212.0" AnchorPane.leftAnchor="529.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="212.0">
+       <Label fx:id="titleLabel" alignment="CENTER" layoutX="529.0" layoutY="212.0" prefHeight="178.0" prefWidth="426.0" text="ВАС ПРИВЕТСТВУЕТ TESLER - ПРИЛОЖЕНИЕ ДЛЯ СОЗДАНИЯ И УПРАВЛЕНИЯ ТЕСТАМИ!" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" AnchorPane.bottomAnchor="212.0" AnchorPane.leftAnchor="529.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="212.0">
          <font>
             <Font size="24.0" />
          </font>
@@ -37,7 +37,7 @@
        </Button>
       <ImageView fx:id="img" fitHeight="220.0" fitWidth="218.0" layoutX="72.0" layoutY="212.0" opacity="0.67" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="171.0" AnchorPane.leftAnchor="72.0">
          <image>
-            <Image url="@../images/pc.png" />
+            <Image url="@../images/pc.gif" />
          </image>
       </ImageView>
 

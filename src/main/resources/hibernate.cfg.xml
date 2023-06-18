@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.url">jdbc:mysql://znf.h.filess.io:3307/tesler_growvowel?characterEncoding=UTF-8</property>
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.username">tesler_growvowel</property>
         <property name="connection.password">5676d9915cb7d19e904d508e115c84371f992a69</property>
 

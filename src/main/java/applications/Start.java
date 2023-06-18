@@ -34,7 +34,7 @@ public class Start extends Application {
         scene.getStylesheets().add(getClass().getResource("/styles/start.css").toExternalForm());
         scene.getStylesheets().add(getClass().getResource("/styles/global.css").toExternalForm());
 
-        if(!stage.isFullScreen()){
+        if (!stage.isFullScreen()) {
             StageMovement.moveStage(stage, scene);
         }
 
@@ -47,7 +47,7 @@ public class Start extends Application {
         stage.setResizable(false);
         stage.setFullScreenExitHint("");
 
-        if (stage.isFullScreen()){
+        if (stage.isFullScreen()) {
             controller.fullScreen();
         }
 

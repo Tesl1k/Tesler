@@ -1,5 +1,5 @@
 .label{
-    -fx-background-color: #1976d2;
+    -fx-background-color: linear-gradient(to bottom, #2679cb 20%, #1a4a91 50%);
     -fx-background-radius: 10px;
     -fx-text-fill: white;
     -fx-padding: 5px;
@@ -13,7 +13,7 @@
 }
 
 .button {
-    -fx-background-color: linear-gradient(#7f83d7, #0c63ae);
+    -fx-background-color: linear-gradient(#7f83d7, #074f8a);
     -fx-background-radius: 15;
     -fx-background-insets: 0;
 

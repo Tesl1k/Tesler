@@ -2,6 +2,7 @@ package entitys;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,9 +25,12 @@ public class Test {
     private String questionsJson;
     @Column(name = "answer", columnDefinition = "json")
     private String answerJson;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "test")
+    private List<Result> results = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "test", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<UserTest> userTests = new HashSet<>();
 
     public Test(){
     }
@@ -37,7 +41,6 @@ public class Test {
         this.description = description;
         this.questionsJson = mapper.writeValueAsString(questions);
         this.answerJson = mapper.writeValueAsString(answers);
-        this.user = user;
     }
 
     public int getId() {
@@ -94,14 +97,28 @@ public class Test {
         this.answerJson = answerJson;
     }
 
-    public User getUser() {
-        return user;
+    public Set<UserTest> getUserTests() {
+        return userTests;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserTests(Set<UserTest> userTests) {
+        this.userTests = userTests;
     }
 
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
+    }
+
+    public void clearUsers() {
+        for (UserTest userTest : userTests) {
+            userTest.setUser(null);
+        }
+        userTests.clear();
+    }
     @Override
     public String toString() {
         return "Test{" +
@@ -112,5 +129,4 @@ public class Test {
                 ", answerJson='" + answerJson + '\'' +
                 '}';
     }
-
 }

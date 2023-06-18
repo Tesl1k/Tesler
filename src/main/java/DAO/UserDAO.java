@@ -1,11 +1,15 @@
 package DAO;
 
+import entitys.Result;
+import entitys.Test;
 import entitys.User;
+import entitys.UserTest;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
+import resources.Factory;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -17,19 +21,10 @@ import java.util.List;
 public class UserDAO {
     private static List<User> users;
 
-    private static SessionFactory factory;
+    private SessionFactory factory = Factory.getFactory();
 
-    public static void connection(){
+    public void check(){
 
-        factory = new Configuration()
-                .configure("/hibernate.cfg.xml")
-                .addAnnotatedClass(User.class)
-                .buildSessionFactory();
-
-        check();
-    }
-
-    private static void check(){
         try{
 
             Session session = factory.getCurrentSession();
@@ -46,13 +41,12 @@ public class UserDAO {
         }
     }
 
-    public static void update(User user){
+    public void update(User user){
 
-        connection();
 
         try {
 
-            Session session = factory.openSession();
+            Session session = factory.getCurrentSession();
 
             session.beginTransaction();
 
@@ -66,14 +60,11 @@ public class UserDAO {
         }
         finally {
             check();
-            close();
         }
 
     }
 
     public void addUser(User user){
-
-        connection();
 
         try{
 
@@ -104,7 +95,6 @@ public class UserDAO {
 
         finally {
             check();
-            close();
         }
 
     }
@@ -150,12 +140,13 @@ public class UserDAO {
 
     }
 
+
     public List<User> getUsers(){
 
         return users;
     }
 
-    public static void close(){
+    public void close(){
         factory.close();
     }
 

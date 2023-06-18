@@ -5,6 +5,7 @@ import DAO.TestDAO;
 import DAO.UserDAO;
 import applications.Main;
 import applications.Profile;
+import applications.Start;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import configs.Config;
 import configs.MainConfig;
@@ -15,14 +16,19 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -44,10 +50,11 @@ public class ProfileController implements Initializable {
     @FXML
     private Label surname, name;
     @FXML
-    private VBox vb;
+    private VBox vb, avatarVB, passTestVB, infoVB, resultVB;
     @FXML
     private ListView<String> passTests;
-    private ObservableList<String> observableList;
+    @FXML
+    private ScrollPane sc;
     private UserDAO userDAO;
     private ResultDAO resultDAO;
     private TestDAO testDAO;
@@ -56,19 +63,48 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        observableList = FXCollections.observableArrayList();
-
         context = new AnnotationConfigApplicationContext(MainConfig.class);
 
         config = new Config("src/main/resources/properties/saving.properties");
 
+        sc.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
         BackFiguresMovement.drowing(anc, Color.web("#1cdc99"));
+        Profile.getStage().setFullScreen(Boolean.parseBoolean(config.get("fullScreen")));
+
+        if(Profile.getStage().isFullScreen()){
+            resultVB.setPrefWidth(600);
+            resultVB.setPrefHeight(700);
+            passTestVB.setPrefWidth(400);
+            passTestVB.setPrefHeight(450);
+            AnchorPane.setLeftAnchor(passTestVB, 200.);
+            AnchorPane.setBottomAnchor(passTestVB, 150.);
+            sc.setPrefHeight(500);
+            vb.setPrefHeight(500);
+            vb.setPrefWidth(600);
+        }
+        else {
+            resultVB.setPrefWidth(350);
+            resultVB.setPrefHeight(320);
+            AnchorPane.setLeftAnchor(passTestVB, 35.);
+            AnchorPane.setBottomAnchor(passTestVB, 8.);
+            sc.setPrefHeight(270);
+            vb.setPrefHeight(270);
+            vb.setPrefWidth(415);
+        }
 
         userDAO = context.getBean(UserDAO.class);
         resultDAO = context.getBean(ResultDAO.class);
         testDAO = context.getBean(TestDAO.class);
 
-        results = resultDAO.getResults();
+        results = new ArrayList<>();
+
+        for(Result result : resultDAO.getResults()){
+            if(result.getUser().getEmail().equals(config.get("userEmail"))){
+                results.add(result);
+            }
+        }
+
 
         user = userDAO.getUser(config.get("userEmail"));
 
@@ -119,15 +155,42 @@ public class ProfileController implements Initializable {
                             }
 
                             Label attempt = new Label("Попытка №" + i);
-                            VBox.setMargin(attempt, new Insets(0, 10, 10, 150));
+                            attempt.setTextFill(Color.WHITE);
+                            if(!Profile.getStage().isFullScreen()){
+                                VBox.setMargin(attempt, new Insets(0, 10, 10, 130));
+                            }
+                            else {
+                                VBox.setMargin(attempt, new Insets(0, 10, 10, 250));
+                            }
                             vBox.getChildren().add(attempt);
 
                             for (Map.Entry<String, List<String>> entry : res.entrySet()){
 
 
+
                                 Label question = new Label("Вопрос: " + entry.getKey());
-                                Label myAnswer = new Label("Ваш ответ: " + entry.getValue().get(0));
+                                question.setTextFill(Color.WHITE);
+
+                                Label myAnswer = new Label();
+
+                                Text answerPrefix = new Text("Ваш ответ: ");
+                                Text answerText = new Text(entry.getValue().get(0));
+
+                                answerPrefix.setFill(Color.WHITE);
+
+                                if (entry.getValue().get(0).equals(entry.getValue().get(1))) {
+                                    answerText.setFill(Color.LIGHTGREEN);
+                                } else {
+                                    answerText.setFill(Color.web("#e17575"));
+                                }
+
+                                TextFlow textFlow = new TextFlow(answerPrefix, answerText);
+                                myAnswer.setGraphic(textFlow);
+
                                 Label rightAnswer = new Label("Правильный ответ: " + entry.getValue().get(1));
+                                rightAnswer.setTextFill(Color.WHITE);
+
+                                VBox.setMargin(rightAnswer, new Insets(0, 0, 5, 0));
 
                                 vBox.getChildren().add(question);
                                 vBox.getChildren().add(myAnswer);
@@ -165,25 +228,12 @@ public class ProfileController implements Initializable {
             Image image = new Image(selectedFile.toURI().toString());
 
             avatar.setImage(image);
-            userDAO.getUser(config.get("userEmail")).setAvatar(image);
+            User user = userDAO.getUser(config.get("userEmail"));
+            user.setAvatar(image);
+            userDAO.update(user);
 
         }
 
     }
 
-    private boolean checkAvatar(Image image){
-
-        if(image.getWidth() <= 512 && image.getHeight() <= 512){
-            return true;
-        }
-
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Ошибка");
-        alert.setHeaderText(null);
-        alert.setContentText("Размер изображения превышает 512x512");
-        alert.showAndWait();
-
-        return false;
-
-    }
 }
